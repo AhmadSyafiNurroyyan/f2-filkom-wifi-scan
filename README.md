@@ -128,7 +128,8 @@ sinyal yang lebih lemah sesuai legenda RSSI pada peta.
     ├── output/                     # Hasil analisis dan visualisasi
     ├── titik_L2.csv                # Koordinat titik survei
     ├── ap_fisik_L2.csv             # Posisi AP yang terlihat di denah
-    └── README.md                   # Catatan asumsi analisis L2
+    ├── README.md                   # Catatan asumsi analisis L2
+    └── perancangan-solusi-wifi-l2.md # Rancangan solusi hasil analisis
 ```
 
 ## Menjalankan analisis

@@ -1,0 +1,16 @@
+Lokasi,Kanal,Lebar,Frekuensi,AP Vendor,RSSI,SSID ,BSSID
+F2.4,40,20 MHz,5200 MHz,Ruckus Wireless,-51 dBm,WiFi-UB.x,c0:c7:0a:98:3a:71
+F2.4,40,20 MHz,5200 MHz,Ruckus Wireless,-53 dBm,eduroam,c0:c7:0a:98:3a:71
+F2.1,36,20 MHz,5180 MHz,Ruckus Wireless,-77 dBm,WiFi-UB.x,c0:c7:0a:98:35:01
+F2.1,36,20 MHz,5180 MHz,Ruckus Wireless,-73 dBm,eduroam,c0:c7:0a:98:35:01
+F2.2,157,20 MHz,5785 MHz,Ruckus Wireless,-79 dBm,WiFi-UB.x,c0:c7:0a:98:35:01
+F2.2,157,20 MHz,5785 MHz,Ruckus Wireless,-81 dBm,eduroam,c0:c7:0a:98:35:01
+F2.9,36,20 MHz,5180 MHz,Ruckus Wireless,-45 dBm,WiFi-UB.x,c0:c7:0a:58:3a:a1
+F2.9,36,20 MHz,5180 MHz,Ruckus Wireless,-41 dBm,eduroam,c0:c7:0a:58:3a:a1
+F2.8,-,-,-,-,-,-,-
+F2.6,157,20 MHz,5785 MHz,Ruckus Wireless,-51 dBm,WiFi-UB.x,00:e6:3a:50:d4:dc
+F2.6,157,20 MHz,5785 MHz,Ruckus Wireless,-52 dBm,eduroam,00:e6:3a:50:d4:dc
+F2-Koridor,157,20 MHz,5785 MHz,Ruckus Wireless,-68 dBm,WiFi-UB.x,00:33:58:4e:91:e1
+F2-Koridor,157,20 MHz,5785 MHz,Ruckus Wireless,-70 dBm,eduroam,00:33:58:4e:91:e1
+F2.5,153,20 MHz,5765 MHz,Ruckus Wireless,-46 dBm,WiFi-UB.x,c0:c7:0a:98:3a:71
+F2.5,153,20 MHz,5765 MHz,Ruckus Wireless,-47 dBm,eduroam,c0:c7:0a:98:3a:71

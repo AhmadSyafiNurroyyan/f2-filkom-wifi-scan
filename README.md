@@ -83,6 +83,25 @@ Legenda denah:
 - titik hijau: titik pengujian;
 - garis kuning: lintasan pengujian roaming.
 
+### Pemetaan kualitas Cambium
+
+Hasil heatmap dari Cambium menunjukkan sebaran RSSI di lantai 2 Gedung F
+untuk masing-masing band dan gabungan seluruh band. Area dengan warna merah
+memiliki sinyal lebih kuat, sedangkan warna hijau hingga biru menunjukkan
+sinyal yang lebih lemah sesuai legenda RSSI pada peta.
+
+#### 2,4 GHz
+
+![Heatmap Cambium 2,4 GHz](cambium-heatmap/heatmap-cambium-4-1.png)
+
+#### 5 GHz
+
+![Heatmap Cambium 5 GHz](cambium-heatmap/heatmap-cambium-5-1.png)
+
+#### Semua band
+
+![Heatmap Cambium semua band](cambium-heatmap/heatmap-cambium-3-1.png)
+
 ## Struktur repository
 
 ```text
@@ -99,6 +118,10 @@ Legenda denah:
 │   ├── denah-scan-f2-filkom.png    # Denah sumber resolusi tinggi
 │   ├── denah-preview.png           # Denah terukur untuk analisis
 │   └── detail-sebaran-ap.csv       # Snapshot inventaris AP controller
+├── cambium-heatmap/                # Heatmap RSSI dari Cambium
+│   ├── heatmap-cambium-3-1.png     # Semua band
+│   ├── heatmap-cambium-4-1.png     # Band 2,4 GHz
+│   └── heatmap-cambium-5-1.png     # Band 5 GHz
 ├── mobile-wifi-analyzer/           # Validasi scan dari Android
 └── analisis-l2/
     ├── input/                      # CSV gabungan untuk pipeline

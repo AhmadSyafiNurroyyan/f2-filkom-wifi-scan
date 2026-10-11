@@ -1,202 +1,243 @@
-## 8. Prosedur Lapangan (Pertemuan 1)
+<div align="center">
 
-### 8.1 Tahap 1: Sketsa denah dan titik ukur
+# Wi-Fi Survey FILKOM
 
-**Acuan: peta jalur evakuasi Gedung F** yang terpasang di setiap lantai. Foto peta itu, tetapi **tetap gambar denah sendiri** dan ukur ulang di lapangan. Hal-hal yang terbaca dari peta lantai 3:
-- Ukuran lantai **36 × 36 m**, dengan grid kolom **7,2 m**: sumbu **A–F** (arah horizontal) dan **1–6** (arah vertikal).
-- **Garis jalur evakuasi = koridor.** Koridor berbentuk **cincin** yang mengelilingi blok ruang di tengah, dengan **persimpangan (junction) di keempat sudutnya**.
-- **Kotak-kotak = ruang kelas**, yaitu blok tengah (±6 kelas) serta deretan kelas di sisi atas dan bawah denah.
-- Lift, toilet, dan tangga ada di sisi sumbu F. Tangga lain ada di dekat sumbu C–B (atas dan bawah). Hall terbuka ada di sisi sumbu F dan sumbu A–B.
-- **Perhatikan mata angin:** pada peta evakuasi, **Utara ada di bawah** gambar. Pakai **nama sumbu grid** (mis. "koridor sumbu 5 antara E–D"), jangan kiri/kanan.
+### Pemetaan kualitas sinyal Wi-Fi 5 GHz Gedung F FILKOM
 
-**Sketsa (di kertas A3/milimeter blok, pensil):**
-- Gambar dinding luar, koridor, ruang (tulis nomor/nama ruang), pintu, tangga, lift, dan toilet.
-- **Ukur dan tulis angka dimensi** pada sketsa: panjang dan lebar koridor serta lebar setiap ruang. Gunakan meteran/laser, atau **hitung ubin lantai** (ukur satu ubin, mis. 60 × 60 cm), atau langkah kaki yang sudah dikalibrasi.
-- Tandai **titik acuan (0,0) = perpotongan sumbu F dan 6** (sudut gedung di sisi toilet) dan panah arah utara. Titik ini sama di ketiga lantai.
-- Beri keterangan material dinding penting: beton, bata, kaca, partisi gipsum, pintu/lemari logam.
-- Tandai **setiap AP yang terlihat** (plafon/dinding) dengan ■ dan kode `AP-L{n}-01`, `AP-L{n}-02`, …, lalu **foto** setiap AP. Jika label atau model AP terbaca dari bawah, catat juga.
+Survei pasif, pengujian aktif, validasi Android, dan analisis roaming<br>
+untuk SSID `WiFi-UB.x` di lantai 2 Gedung F FILKOM.
 
-**Titik ukur (target 25–35 titik per lantai), gambar di sketsa dan beri nomor `L{n}-001`, `L{n}-002`, …:**
-- Koridor cincin: 1 titik setiap **± 5 m**, **ditambah 1 titik di setiap persimpangan/sudut koridor**, karena di sudut sinyal sering terhalang dinding dari dua arah.
-- Setiap **ruang kelas** yang bisa diakses: minimal **1 titik di tengah**. Kelas besar: tambah 1 titik di **pojok terjauh dari AP**. Titik di dalam kelas penting karena mahasiswa memakai Wi-Fi di kelas, bukan di koridor.
-- Area khusus: tangga, depan lift, lounge mahasiswa, ujung koridor, dan dekat jendela/balkon.
-- 1 **titik kalibrasi** `L{n}-000` di area terbuka dekat AP.
-- **Foto sketsa** setelah selesai dan unggah ke folder bersama. Foto ini menjadi acuan digitalisasi.
+<p>
+  <img src="https://img.shields.io/badge/band-5%20GHz-2563eb?style=flat-square" alt="5 GHz">
+  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-475569?style=flat-square" alt="Platform">
+  <img src="https://img.shields.io/badge/status-L2%20analyzed-16a34a?style=flat-square" alt="Analysis status">
+  <img src="https://img.shields.io/badge/license-academic%20project-7c3aed?style=flat-square" alt="Academic project">
+</p>
 
-### 8.2 Tahap 2: Kalibrasi
-
-Di titik `L{n}-000`, semua laptop melakukan 5 scan bersamaan, dan ponsel mencatat RSSI SSID kampus dari WiFiAnalyzer:
-
-```bat
-:: Windows
-python scan_point.py --titik L3-000 --lantai 3 --slot T1 --device laptopA --out data\passive_L3_A.csv --n 5 --ssid "WiFi-UB.x"
-```
-```bash
-# Ubuntu/Linux dan macOS
-python scan_point.py --titik L3-000 --lantai 3 --slot T1 \
-     --device laptopA --out data/passive_L3_A.csv --n 5 --ssid "WiFi-UB.x"
-```
-
-Catat selisih RSSI antar-perangkat untuk AP yang sama (**offset perangkat**) di Lembar Kerja. Offset ini dibahas di laporan dan **tidak** dipakai untuk mengoreksi data secara otomatis.
-
-### 8.3 Tahap 3: Survei pasif
-
-> Koordinat titik **belum diperlukan** saat survei. Cukup nomor titik dari sketsa. Koordinat disambungkan saat analisis (`analyze.py --titik`).
-
-Di setiap titik:
-1. Berdiri tepat di titik sesuai sketsa. Pegang laptop setinggi **± 1 m** dengan layar menghadap **arah yang sama** di semua titik. Surveyor tidak berdiri di antara laptop dan arah AP terdekat.
-2. Jalankan (3 scan, ± 20–25 detik):
-   ```bat
-   :: Windows
-   python scan_point.py --titik L3-017 --lantai 3 --slot T1 --device laptopA --out data\passive_L3_A.csv --ssid "WiFi-UB.x" --catatan "kelas kosong, pintu tertutup"
-   ```
-   ```bash
-   # Ubuntu/Linux dan macOS
-   python scan_point.py --titik L3-017 --lantai 3 --slot T1 \
-        --device laptopA --out data/passive_L3_A.csv --ssid "WiFi-UB.x" --catatan "kelas kosong"
-   ```
-3. **Tulis RSSI terkuat SSID kampus** yang tampil di layar ke sketsa, di samping nomor titik. Angka ini dipakai untuk memilih titik uji aktif (§8.4) dan membantu presentasi.
-4. Secara bersamaan, anggota lain mengambil screenshot **WiFiAnalyzer** (tab *Access Points*, filter 5 GHz) dengan nama file `L3-017.png`.
-5. Isi Lembar Kerja: centang titik, perkiraan jumlah orang, dan pintu terbuka/tertutup.
-6. Pindah ke titik berikutnya. Target: ± 2 menit per titik.
-
-**Jalur darurat (jika laptop bermasalah):** catat manual dari WiFiAnalyzer ke CSV dengan kolom `titik_id,ssid,bssid,channel,rssi_dbm`, **satu baris untuk setiap BSSID 5 GHz yang terlihat** (bukan hanya yang terkuat). Karena SSID-nya sama di semua AP, BSSID adalah satu-satunya pembeda AP. Catat juga baris eduroam/FILKOM EVENT bila terlihat. `analyze.py` tetap bisa memprosesnya.
-
-### 8.4 Tahap 4: Survei aktif dan roaming
-
-**Pilih 6–8 titik** dari RSSI yang tertulis di sketsa:
-- 3 titik dengan **RSSI terendah atau tidak terdeteksi**,
-- 2 titik dengan **RSSI terbaik** (pembanding),
-- 1–3 titik yang **RSSI-nya bagus tetapi dicurigai**, misalnya area padat mahasiswa atau banyak AP terdengar.
-
-Hubungkan laptop ke **`WiFi-UB.x`**, lalu di setiap titik jalankan:
-```bat
-:: Windows
-python active_point.py --titik L3-017 --out data\active_L3.csv
-```
-```bash
-# Ubuntu/Linux dan macOS
-python active_point.py --titik L3-017 --out data/active_L3.csv
-```
-
-> **Target latensi default adalah `filkom.ub.ac.id`** (server kampus). **Gateway jaringan UB tidak membalas ping**, karena ICMP diblokir. Ini sudah diuji langsung di lantai 3, jadi jangan memakai gateway sebagai target. Jika target sama sekali tidak membalas ping, skrip otomatis mengukur latensi dengan **koneksi TCP port 443**, dan metodenya dicatat di kolom `metode_rtt`. Throughput iperf3 bersifat **opsional**: tambahkan `--iperf <IP_SERVER>` hanya jika ada server iperf3.
-
-**Uji roaming (1 lintasan koridor, ± 5 menit):** berjalan pelan dari ujung ke ujung koridor sambil menjalankan dua terminal:
-```bat
-:: Terminal 1 (Windows) - BSSID dan sinyal setiap detik
-python roam_log.py --out raw\roaming_L3.csv
-:: Terminal 2 (PowerShell) - ping dengan cap waktu
-ping -t filkom.ub.ac.id | ForEach-Object { "{0} {1}" -f (Get-Date -Format HH:mm:ss), $_ } | Tee-Object raw\roaming_ping_L3.txt
-```
-```bash
-# Ubuntu/Linux dan macOS
-python roam_log.py --out raw/roaming_L3.csv                          # terminal 1
-ping -i 0.2 filkom.ub.ac.id | while read l; do echo "$(date +%T) $l"; done | tee raw/roaming_ping_L3.txt   # terminal 2
-```
-Tandai di sketsa lokasi saat log menampilkan **"PINDAH AP"**. Catat **sinyal sesaat sebelum pindah** dan **ping yang hilang** di sekitar waktu tersebut. Jika klien tetap menempel ke AP jauh sampai sinyal < −75 dBm, itu tanda **sticky client** atau kurangnya overlap antar-AP. Karena SSID-nya sama di semua lantai, perhatikan juga apakah klien **berpindah ke AP lantai lain**. Cocokkan BSSID di log dengan daftar AP per lantai hasil pleno (§9.5).
-
-> Pada Windows, sinyal di `roam_log.py` adalah **aproksimasi** dari persentase kualitas sinyal ((persen/2) − 100), karena pembacaan dBm yang akurat memerlukan scan yang akan mengganggu uji roaming. Sebutkan hal ini di laporan.
-
-### 8.5 Penutup
-
-Gabungkan data tim A dan B, lalu unggah seluruh folder ke folder bersama:
-```bash
-# Linux/macOS
-head -1 data/passive_L3_A.csv > data/passive_L3.csv
-tail -q -n +2 data/passive_L3_A.csv data/passive_L3_B.csv >> data/passive_L3.csv
-```
-```bat
-:: Windows (PowerShell)
-Import-Csv data\passive_L3_A.csv, data\passive_L3_B.csv -Encoding UTF8 | Export-Csv data\passive_L3.csv -NoTypeInformation -Encoding UTF8
-```
+</div>
 
 ---
 
-## 9. Pengolahan dan Analisis (selama seminggu)
+## Tentang project
 
-### 9.1 Digitalisasi denah
+Project ini mengolah hasil site survey Wi-Fi 5 GHz untuk menjawab tiga pertanyaan:
 
-**Tool:** draw.io/diagrams.net (disarankan), Inkscape, atau LibreCAD.
+1. Di mana kualitas sinyal atau layanan jaringan menurun?
+2. Apa penyebabnya: coverage gap, co-channel interference, beban AP, atau roaming?
+3. Bagaimana posisi AP dan rekomendasi perbaikannya berdasarkan data?
 
-| Aturan | Ketentuan |
+Toolchain utama project:
+
+```text
+scan_point.py  ->  passive scan 5 GHz
+active_point.py -> RTT, jitter, loss, dan link information
+roam_log.py    -> perpindahan BSSID saat berjalan
+analyze.py     -> metrik, status, heatmap, kanal, dan estimasi AP
+```
+
+## Hasil singkat lantai 2
+
+| Metrik | Hasil |
+|---|---:|
+| Titik yang dianalisis | 9 titik + 1 titik kalibrasi |
+| RSSI minimum AP terkuat | -58,0 dBm |
+| Titik dengan RSSI AP terkuat >= -67 dBm | 100% |
+| Titik dengan AP cadangan >= -75 dBm | 100% |
+| Titik dengan CCI > 2 radio | 44,4% |
+| Area lemah yang terdeteksi | `L2-F2.8` |
+| Roaming transition terdeteksi | 8 transisi |
+
+### Temuan utama
+
+- **F2.8** adalah prioritas validasi: active test mencatat packet loss 100%,
+  sementara WiFiAnalyzer tidak mendeteksi AP pada titik tersebut.
+- **F2.6** perlu diperiksa terkait utilisasi kanal tinggi. Data controller
+  historis menunjukkan utilisasi 5 GHz sebesar 92% pada AP F2.6.
+- **F2.9** memiliki RSSI kuat, tetapi RTT dan jitter tinggi. Ini menunjukkan
+  bahwa RSSI yang baik tidak selalu berarti kualitas layanan yang baik.
+- **F2.2 dan titik sisi kiri** menunjukkan indikasi co-channel interference
+  dari beberapa radio.
+
+> Detail angka dan status per titik tersedia di
+> [`analisis-l2/output/L2_ringkasan.txt`](analisis-l2/output/L2_ringkasan.txt).
+
+## Visualisasi
+
+### Heatmap RSSI
+
+![Heatmap RSSI 5 GHz](analisis-l2/output/L2_heatmap.png)
+
+### Peta status, area lemah, dan posisi AP
+
+![Peta status Wi-Fi](analisis-l2/output/L2_status.png)
+
+### Denah survei
+
+![Denah survei lantai 2](mapping/denah-preview.png)
+
+Legenda denah:
+
+- titik biru: AP fisik;
+- titik hijau: titik pengujian;
+- garis kuning: lintasan pengujian roaming.
+
+## Struktur repository
+
+```text
+.
+├── active_point.py                 # Uji aktif: RTT, jitter, loss, link
+├── analyze.py                      # Pipeline analisis satu lantai
+├── roam_log.py                     # Pencatatan perpindahan BSSID
+├── scan_point.py                   # Passive scan Wi-Fi
+├── wlan_win.py                     # Native Wi-Fi API untuk Windows
+├── hasil-scan/
+│   ├── point/                      # Data passive dan active tiga laptop
+│   └── roaming/                    # Log roaming dan ping
+├── mapping/
+│   ├── denah-scan-f2-filkom.png    # Denah sumber resolusi tinggi
+│   ├── denah-preview.png           # Denah terukur untuk analisis
+│   └── detail-sebaran-ap.csv       # Snapshot inventaris AP controller
+├── mobile-wifi-analyzer/           # Validasi scan dari Android
+└── analisis-l2/
+    ├── input/                      # CSV gabungan untuk pipeline
+    ├── output/                     # Hasil analisis dan visualisasi
+    ├── titik_L2.csv                # Koordinat titik survei
+    ├── ap_fisik_L2.csv             # Posisi AP yang terlihat di denah
+    └── README.md                   # Catatan asumsi analisis L2
+```
+
+## Menjalankan analisis
+
+### Persiapan environment
+
+Project menggunakan Python 3.10+ dan library berikut:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install pandas numpy scipy matplotlib
+```
+
+Jika environment `.venv` sudah tersedia:
+
+```powershell
+.\.venv\Scripts\python.exe --version
+```
+
+### Menjalankan pipeline L2
+
+```powershell
+.\.venv\Scripts\python.exe analyze.py `
+  --passive analisis-l2\input\passive_L2.csv `
+  --titik analisis-l2\titik_L2.csv `
+  --ssid "WiFi-UB.x" `
+  --band 5 `
+  --denah mapping\denah-preview.png `
+  --scale 46.4 `
+  --out analisis-l2\output\L2 `
+  --active analisis-l2\input\active_L2.csv `
+  --ap-fisik analisis-l2\ap_fisik_L2.csv
+```
+
+Output akan dibuat dengan prefix `analisis-l2/output/L2`:
+
+| File | Kegunaan |
 |---|---|
-| Skala | **1 meter = 20 piksel**. Di draw.io, aktifkan grid 20 px, sehingga 1 kotak = 1 m |
-| Titik acuan (0,0) | **Perpotongan sumbu F dan 6** diletakkan di piksel **(100, 100)** pada ketiga denah, supaya ketiga lantai bisa ditumpuk |
-| Ukuran kanvas | **920 × 920 px** untuk ketiga lantai (36 m × 20 px = 720 px, ditambah margin 100 px di setiap sisi) |
-| Isi | Dinding, ruang + nomor, pintu, tangga, lift, toilet, material penting, AP fisik (■ + kode), panah utara |
-| Ekspor | `denah_L{n}.png` tanpa margin + file sumber `.drawio`/`.svg` |
+| [`L2_titik.csv`](analisis-l2/output/L2_titik.csv) | Metrik, status, dan penyebab per titik |
+| [`L2_area_lemah.csv`](analisis-l2/output/L2_area_lemah.csv) | Kelompok area lemah |
+| [`L2_ap.csv`](analisis-l2/output/L2_ap.csv) | Estimasi posisi radio AP |
+| [`L2_heatmap.png`](analisis-l2/output/L2_heatmap.png) | Heatmap RSSI AP terkuat |
+| [`L2_status.png`](analisis-l2/output/L2_status.png) | Status titik dan pemetaan AP |
+| [`L2_kanal.png`](analisis-l2/output/L2_kanal.png) | Distribusi kanal 5 GHz |
+| [`L2_ringkasan.txt`](analisis-l2/output/L2_ringkasan.txt) | Ringkasan angka untuk laporan |
+| [`L2_roaming_transitions.csv`](analisis-l2/output/L2_roaming_transitions.csv) | Ringkasan perpindahan BSSID |
 
-Setelah itu:
-```bash
-python mark_points.py --denah denah/denah_L3.png --lantai 3 --out data/titik_L3.csv
+## Pengumpulan data
+
+### Passive scan
+
+```powershell
+python scan_point.py `
+  --titik L2-F2.8 `
+  --lantai 2 `
+  --slot T1 `
+  --device laptopA `
+  --out hasil-scan\point\laptopA_passive_L2.csv `
+  --n 3 `
+  --ssid "WiFi-UB.x"
 ```
-Klik dua ujung koridor dan masukkan panjang sebenarnya. Skala yang tercetak harus **≈ 20 px/m**; jika jauh berbeda, periksa kembali denahnya. Lalu klik titik ukur **berurutan sesuai nomor di sketsa**. Buat juga `ap_fisik_L{n}.csv`:
-```csv
-ap_id,x_px,y_px,keterangan
-AP-L3-01,340,180,plafon koridor depan R.3.x
+
+### Active test
+
+Laptop harus sudah terhubung ke `WiFi-UB.x`.
+
+```powershell
+python active_point.py `
+  --titik L2-F2.8 `
+  --out hasil-scan\point\laptopA_active_L2.csv
 ```
 
-### 9.2 Menjalankan analisis
+Jika tersedia server iperf3, throughput dapat ditambahkan dengan `--iperf
+<IP_SERVER>`. Pengujian dibatasi oleh skrip maksimal 8 detik per arah.
 
-```bash
-python analyze.py --passive data/passive_L3.csv --titik data/titik_L3.csv --ssid "WiFi-UB.x" \
-       --denah denah/denah_L3.png --scale 20 --out output/L3 \
-       --active data/active_L3.csv --ap-fisik data/ap_fisik_L3.csv
+### Roaming
+
+Jalankan pencatatan BSSID dan ping secara bersamaan:
+
+```powershell
+python roam_log.py --out hasil-scan\roaming\laptopA_roaming_L2.csv
+ping -t filkom.ub.ac.id
 ```
 
-| File keluaran | Isi | Dipakai untuk |
-|---|---|---|
-| `L3_heatmap.png` | Heatmap RSSI AP terkuat + garis kontur −67 dBm (hijau) dan −75 dBm (merah) | Peta cakupan |
-| `L3_status.png` | Titik berwarna menurut status, area lemah A1, A2, … (arsir merah), AP estimasi (▲ penuh = di lantai ini, △ kosong = mungkin tembus dari lantai lain), dan AP fisik (□) | **Peta Kualitas Sinyal dan Penempatan AP** |
-| `L3_titik.csv` | Metrik per titik: rssi1, rssi2, kanal, lebar, CCI, SNR, util, status, penyebab | Tabel lampiran |
-| `L3_area_lemah.csv` | Daftar area lemah + penyebab dominan | Inti analisis |
-| `L3_ap.csv` | Estimasi posisi setiap radio AP (weighted centroid dari 3 titik terkuat), kanal, keyakinan (tinggi: RSSI maks ≥ −55 dBm; sedang: −65 s.d. −55; rendah: < −65) | Pemetaan AP |
-| `L3_kanal.png` | Jumlah radio per kanal 5 GHz (SSID kampus vs lainnya) | Analisis channel plan |
-| `L3_ringkasan.txt` | Persentase cakupan dan jumlah status | Angka kunci laporan |
+Pada Windows, RSSI roaming adalah aproksimasi dari kualitas sinyal. Nilainya
+digunakan untuk mendeteksi pergantian BSSID, bukan sebagai pengukuran dBm
+presisi.
 
-Contoh keluaran dari **data sintetis** (bukan data FILKOM) ada di `scripts_survey_wifi/contoh_output/`.
+## Interpretasi status
 
-> **Keterbatasan yang wajib disadari:**
-> (a) Interpolasi heatmap hanya diisi sampai **6 m dari titik ukur terdekat**. Contohnya, blok kelas di tengah koridor cincin tidak akan "dikarang" nilainya jika tidak ada titik di dalamnya. Jika semua titik berada pada satu garis, skrip otomatis beralih ke IDW (radius 5 m). Metode yang dipakai tercantum di judul heatmap.
-> (b) Estimasi posisi AP adalah **perkiraan**. Keyakinan "sedang" (△) berarti AP kemungkinan tembus dari lantai atas/bawah atau berada di ruang tertutup. Keyakinan "rendah" tidak digambar, tetapi tetap tercantum di `L{n}_ap.csv`. Konfirmasi lantai asal AP saat pleno (`gabung_lantai.py`).
-> (c) BSSID digabung menjadi satu radio hanya jika **kanalnya sama, SSID-nya berbeda, MAC-nya hanya beda 1 oktet, dan RSSI-nya hampir identik** (median selisih ≤ 4 dB) di titik yang sama. Contohnya WiFi-UB.x, eduroam, dan FILKOM EVENT dari satu AP. BSSID ber-SSID sama tidak pernah digabung, sehingga dua AP WiFi-UB.x ber-MAC berurutan tetap terhitung terpisah. Skrip menampilkan baris `Info:` saat penggabungan terjadi.
-> (d) Survei dilakukan pada satu rentang waktu. Kondisi beban pada jam lain bisa berbeda.
+`analyze.py` menggunakan beberapa ambang praktikum:
 
-### 9.3 Langkah interpretasi
+| Kondisi | Interpretasi |
+|---|---|
+| RSSI >= -67 dBm | Baik untuk kebutuhan umum |
+| RSSI < -70 dBm | Perhatian |
+| RSSI < -80 dBm | Blank spot atau sangat lemah |
+| AP kedua >= -75 dBm | Ada redundansi untuk roaming |
+| CCI > 2 radio | Potensi co-channel interference |
+| Utilisasi kanal > 50% | Kanal relatif padat |
+| Loss > 2% | Gangguan layanan yang perlu diperiksa |
+| RTT > 50 ms | Latensi tinggi untuk konteks survei ini |
 
-1. **Cakupan:** berapa % titik yang BAIK (≥ −67 dBm)? Di ruang mana blank spot berada?
-2. **Pemetaan AP:** bandingkan ▲ (estimasi) dengan □ (fisik).
-   - AP fisik tanpa ▲ di dekatnya → AP mati, memakai SSID lain, atau hanya 2,4 GHz.
-   - ▲ tanpa □ → AP tersembunyi di dalam ruangan atau berasal dari lantai lain.
-3. **Kanal:** apakah AP bertetangga memakai kanal yang sama? Berapa lebar kanalnya? Apakah kanal DFS dimanfaatkan?
-4. **Area lemah:** untuk setiap area A1, A2, …, tentukan akar masalah dengan tabel §9.4.
-5. **Verifikasi aktif:** apakah titik yang statusnya buruk memang menunjukkan throughput rendah, loss, atau RTT tinggi? Apakah ada titik "RSSI bagus tetapi lambat"?
-6. **Roaming:** di mana perpindahan AP terjadi, dan apakah ada ping yang hilang?
+Status akhir tidak hanya ditentukan RSSI. Active test, CCI, utilisasi kanal,
+dan packet loss juga dapat menaikkan status titik menjadi `PERHATIAN` atau
+`BURUK`.
 
-### 9.4 Tabel diagnosis: gejala → akar masalah → rekomendasi
+## Batasan dan catatan metodologi
 
-| Gejala di data | Kemungkinan akar masalah | Contoh rekomendasi |
-|---|---|---|
-| RSSI < −75, AP terdekat jauh (> 15–20 m) | **Coverage gap**: jumlah AP kurang | Tambah AP, atau pindahkan AP ke titik tengah area |
-| RSSI rendah padahal AP dekat, terhalang dinding beton/ruang tertutup | **Atenuasi material**: AP di koridor melayani ruang kelas | Tempatkan AP di dalam ruang kelas; perhatikan orientasi AP |
-| RSSI baik, tetapi throughput rendah atau loss tinggi, CCI > 2 | **Co-channel interference** | Susun ulang kanal, turunkan lebar kanal ke 40/20 MHz, manfaatkan kanal DFS, atur daya pancar |
-| RSSI baik, utilisasi kanal > 50%, banyak stasiun | **Beban/kepadatan** | Tambah AP kapasitas (daya rendah), band steering, batasi data rate rendah |
-| AP terkuat berasal dari lantai lain | **Floor bleed**: desain vertikal tidak diperhitungkan | Kurangi daya, atur penggunaan kanal secara vertikal, tambah AP di lantai sendiri |
-| Tidak ada AP cadangan ≥ −75 dBm, roaming disertai ping hilang | **Overlap antar-AP kurang** | Rapatkan jarak AP (overlap sel 15–20%), aktifkan 802.11k/v/r |
-| SNR rendah padahal RSSI cukup | **Noise/interferensi non-Wi-Fi** | Identifikasi sumber interferensi, pindahkan kanal |
+- Dataset saat ini berfokus pada lantai 2 dan memiliki 10 titik lapangan,
+  belum mencapai target panduan 25–35 titik per lantai.
+- Koordinat L2 dibuat dari posisi relatif pada denah, bukan hasil klik
+  `mark_points.py`; interpretasi spasial harus dianggap aproksimasi.
+- `L2-017` dipetakan ke lokasi F2.6 berdasarkan klarifikasi survei.
+- `L2-F2` adalah titik hijau tanpa label di sisi kiri denah.
+- `L2-000` dipertahankan sebagai titik kalibrasi.
+- Windows tidak menyediakan `noise_dbm` pada dataset ini, sehingga SNR tidak
+  dapat dianalisis.
+- Snapshot controller AP memiliki waktu pengambilan yang berbeda dari waktu
+  survei; gunakan sebagai referensi, bukan kondisi real-time.
+- Tidak ada data throughput iperf3 pada hasil saat ini. Analisis aktif
+  menggunakan RTT, jitter, packet loss, RSSI, dan tx rate.
+- Interpolasi heatmap hanya berlaku di sekitar titik yang memiliki pengukuran;
+  area tanpa titik tidak boleh dianggap memiliki kualitas yang sama.
 
-### 9.5 Analisis lintas lantai (Pertemuan 2)
+## Etika survei
 
-Setelah ketiga kelompok mengunggah `L{n}_ap.csv` dan `L{n}_ringkasan.txt`, asisten menjalankan:
-```bash
-python gabung_lantai.py --ap 2:output/L2_ap.csv 3:output/L3_ap.csv 4:output/L4_ap.csv \
-       --titik 2:output/L2_titik.csv 3:output/L3_titik.csv 4:output/L4_titik.csv \
-       --ringkasan output/L2_ringkasan.txt output/L3_ringkasan.txt output/L4_ringkasan.txt \
-       --out output/gedung
-```
-Hasilnya menunjukkan:
-- **Lantai asal setiap AP** (berdasarkan BSSID), sehingga daftar AP per lantai bisa disusun meskipun SSID-nya sama.
-- **Titik yang AP terkuatnya berasal dari lantai lain** (`gedung_titik_lantai_lain.csv`). Di titik ini, klien kemungkinan besar tersambung ke AP lantai atas/bawah. Ini indikasi kuat kurangnya AP di lantai tersebut.
-- Selisih RSSI antar-lantai, yang menjadi **estimasi kasar atenuasi pelat lantai**.
+Survei dilakukan secara pasif dan hanya pada jaringan yang memang berhak
+digunakan. Project ini tidak melakukan deauthentication, jamming, rogue AP,
+cracking, packet capture terhadap pengguna lain, atau flooding.
 
- Selisih ini juga dipengaruhi jarak horizontal, jadi yang paling bermakna adalah titik yang berada tepat di atas atau di bawah AP. Hal ini menjadi bahan diskusi.
+## Referensi
+
+- Panduan praktikum: [`Hands-on_Survey_WiFi_FILKOM.md`](https://github.com/AhmadSyafiNurroyyan/f2-filkom-wifi-scan)
+- Format dokumentasi terinspirasi oleh
+  [Ponytail README](https://github.com/DietrichGebert/ponytail/blob/main/README.md).

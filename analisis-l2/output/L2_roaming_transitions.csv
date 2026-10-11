@@ -1,0 +1,9 @@
+device,waktu_pindah,bssid_sebelum,bssid_sesudah,rssi_sebelum_dbm,rssi_sesudah_dbm,sumber_rssi,ping_timeout_dalam_5s,sampel_ping_dalam_5s
+laptopA,13:36:17,c0:c7:0a:98:3a:71,00:33:58:4e:91:e1,-80.0,-58.5,aprox,0,0
+laptopA,13:37:35,00:33:58:4e:91:e1,c0:c7:0a:98:3a:71,-70.0,-69.5,aprox,0,0
+laptopB,13:34:32,c0:c7:0a:98:35:01,c0:c7:0a:98:3a:71,-55.0,-50.0,aprox,0,0
+laptopB,13:35:14,c0:c7:0a:98:3a:71,c0:c7:0a:98:35:01,-67.5,-50.0,aprox,0,0
+laptopB,13:35:50,c0:c7:0a:98:35:01,00:33:58:8e:91:e1,-82.5,-50.0,aprox,0,0
+laptopB,13:37:45,00:33:58:8e:91:e1,c0:c7:0a:98:35:01,-50.0,-50.0,aprox,0,0
+laptopC,13:38:18,c0:c7:0a:98:3a:71,00:33:58:8e:91:e1,-76.0,-76.0,aprox,0,0
+laptopC,13:40:18,00:33:58:8e:91:e1,c0:c7:0a:98:3a:a1,-60.5,-60.5,aprox,0,0

@@ -1,0 +1,18 @@
+Ringkasan analisis analisis-l2\output\L2 (band 5 GHz, SSID WiFi-UB.x)
+Jumlah titik ukur          : 9
+RSSI >= -67 dBm (baik)     : 100.0%
+RSSI >= -70 dBm            : 100.0%
+RSSI <  -80 dBm (blank)    : 0.0%
+AP cadangan >= -75 dBm     : 100.0%
+CCI > 2 radio             : 44.4%
+RSSI median / min          : -42.7 / -58.0 dBm
+Radio SSID kampus terdeteksi: 31, kanal: [36, 40, 44, 48, 52, 64, 149, 153, 157, 161]
+
+Status titik:
+  BAIK      : 0
+  PERHATIAN : 8
+  BURUK     : 1
+  KRITIS    : 0
+
+Area lemah:
+  A1: 1 titik (L2-F2.8), RSSI rata -58.0, BURUK, penyebab dominan: packet loss

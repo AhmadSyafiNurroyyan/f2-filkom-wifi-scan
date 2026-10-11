@@ -41,7 +41,7 @@ analyze.py     -> metrik, status, heatmap, kanal, dan estimasi AP
 
 | Metrik                                  |                       Hasil |
 | --------------------------------------- | --------------------------: |
-| Titik yang dianalisis                   | 9 titik + 1 titik kalibrasi |
+| Titik yang dianalisis                   | 8 titik |
 | RSSI minimum AP terkuat                 |                   -58,0 dBm |
 | Titik dengan RSSI AP terkuat >= -67 dBm |                        100% |
 | Titik dengan AP cadangan >= -75 dBm     |                        100% |

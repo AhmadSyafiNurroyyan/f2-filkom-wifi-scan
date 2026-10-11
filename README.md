@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="filkom.jpg" alt="Gedung FILKOM Universitas Brawijaya" width="720">
+<img src="filkom.jpg" alt="Gedung FILKOM Universitas Brawijaya" width="480">
 
 # Wi-Fi Survey FILKOM
 

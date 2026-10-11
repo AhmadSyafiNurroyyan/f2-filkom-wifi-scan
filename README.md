@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="filkom.jpg" alt="Gedung FILKOM Universitas Brawijaya" width="720">
+
 # Wi-Fi Survey FILKOM
 
 ### Pemetaan kualitas sinyal Wi-Fi 5 GHz Gedung F FILKOM
@@ -37,15 +39,15 @@ analyze.py     -> metrik, status, heatmap, kanal, dan estimasi AP
 
 ## Hasil singkat lantai 2
 
-| Metrik | Hasil |
-|---|---:|
-| Titik yang dianalisis | 9 titik + 1 titik kalibrasi |
-| RSSI minimum AP terkuat | -58,0 dBm |
-| Titik dengan RSSI AP terkuat >= -67 dBm | 100% |
-| Titik dengan AP cadangan >= -75 dBm | 100% |
-| Titik dengan CCI > 2 radio | 44,4% |
-| Area lemah yang terdeteksi | `L2-F2.8` |
-| Roaming transition terdeteksi | 8 transisi |
+| Metrik                                  |                       Hasil |
+| --------------------------------------- | --------------------------: |
+| Titik yang dianalisis                   | 9 titik + 1 titik kalibrasi |
+| RSSI minimum AP terkuat                 |                   -58,0 dBm |
+| Titik dengan RSSI AP terkuat >= -67 dBm |                        100% |
+| Titik dengan AP cadangan >= -75 dBm     |                        100% |
+| Titik dengan CCI > 2 radio              |                       44,4% |
+| Area lemah yang terdeteksi              |                   `L2-F2.8` |
+| Roaming transition terdeteksi           |                  8 transisi |
 
 ### Temuan utama
 
@@ -141,16 +143,16 @@ Jika environment `.venv` sudah tersedia:
 
 Output akan dibuat dengan prefix `analisis-l2/output/L2`:
 
-| File | Kegunaan |
-|---|---|
-| [`L2_titik.csv`](analisis-l2/output/L2_titik.csv) | Metrik, status, dan penyebab per titik |
-| [`L2_area_lemah.csv`](analisis-l2/output/L2_area_lemah.csv) | Kelompok area lemah |
-| [`L2_ap.csv`](analisis-l2/output/L2_ap.csv) | Estimasi posisi radio AP |
-| [`L2_heatmap.png`](analisis-l2/output/L2_heatmap.png) | Heatmap RSSI AP terkuat |
-| [`L2_status.png`](analisis-l2/output/L2_status.png) | Status titik dan pemetaan AP |
-| [`L2_kanal.png`](analisis-l2/output/L2_kanal.png) | Distribusi kanal 5 GHz |
-| [`L2_ringkasan.txt`](analisis-l2/output/L2_ringkasan.txt) | Ringkasan angka untuk laporan |
-| [`L2_roaming_transitions.csv`](analisis-l2/output/L2_roaming_transitions.csv) | Ringkasan perpindahan BSSID |
+| File                                                                          | Kegunaan                               |
+| ----------------------------------------------------------------------------- | -------------------------------------- |
+| [`L2_titik.csv`](analisis-l2/output/L2_titik.csv)                             | Metrik, status, dan penyebab per titik |
+| [`L2_area_lemah.csv`](analisis-l2/output/L2_area_lemah.csv)                   | Kelompok area lemah                    |
+| [`L2_ap.csv`](analisis-l2/output/L2_ap.csv)                                   | Estimasi posisi radio AP               |
+| [`L2_heatmap.png`](analisis-l2/output/L2_heatmap.png)                         | Heatmap RSSI AP terkuat                |
+| [`L2_status.png`](analisis-l2/output/L2_status.png)                           | Status titik dan pemetaan AP           |
+| [`L2_kanal.png`](analisis-l2/output/L2_kanal.png)                             | Distribusi kanal 5 GHz                 |
+| [`L2_ringkasan.txt`](analisis-l2/output/L2_ringkasan.txt)                     | Ringkasan angka untuk laporan          |
+| [`L2_roaming_transitions.csv`](analisis-l2/output/L2_roaming_transitions.csv) | Ringkasan perpindahan BSSID            |
 
 ## Pengumpulan data
 
@@ -197,16 +199,16 @@ presisi.
 
 `analyze.py` menggunakan beberapa ambang praktikum:
 
-| Kondisi | Interpretasi |
-|---|---|
-| RSSI >= -67 dBm | Baik untuk kebutuhan umum |
-| RSSI < -70 dBm | Perhatian |
-| RSSI < -80 dBm | Blank spot atau sangat lemah |
-| AP kedua >= -75 dBm | Ada redundansi untuk roaming |
-| CCI > 2 radio | Potensi co-channel interference |
-| Utilisasi kanal > 50% | Kanal relatif padat |
-| Loss > 2% | Gangguan layanan yang perlu diperiksa |
-| RTT > 50 ms | Latensi tinggi untuk konteks survei ini |
+| Kondisi               | Interpretasi                            |
+| --------------------- | --------------------------------------- |
+| RSSI >= -67 dBm       | Baik untuk kebutuhan umum               |
+| RSSI < -70 dBm        | Perhatian                               |
+| RSSI < -80 dBm        | Blank spot atau sangat lemah            |
+| AP kedua >= -75 dBm   | Ada redundansi untuk roaming            |
+| CCI > 2 radio         | Potensi co-channel interference         |
+| Utilisasi kanal > 50% | Kanal relatif padat                     |
+| Loss > 2%             | Gangguan layanan yang perlu diperiksa   |
+| RTT > 50 ms           | Latensi tinggi untuk konteks survei ini |
 
 Status akhir tidak hanya ditentukan RSSI. Active test, CCI, utilisasi kanal,
 dan packet loss juga dapat menaikkan status titik menjadi `PERHATIAN` atau
@@ -238,6 +240,4 @@ cracking, packet capture terhadap pengguna lain, atau flooding.
 
 ## Referensi
 
-- Panduan praktikum: [`Hands-on_Survey_WiFi_FILKOM.md`](https://github.com/AhmadSyafiNurroyyan/f2-filkom-wifi-scan)
-- Format dokumentasi terinspirasi oleh
-  [Ponytail README](https://github.com/DietrichGebert/ponytail/blob/main/README.md).
+- Panduan praktikum: [`Hands-on_Survey_WiFi_FILKOM.md`](https://github.com/3k0sakti/wifi-scan/blob/main/Hands-on_Survey_WiFi_FILKOM.md)

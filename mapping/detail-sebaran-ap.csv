@@ -1,0 +1,7 @@
+AP MAC,AP Name,Status,Alarm,IP Address,Total Traffic Byte (1hr) (KB),Clients,Latency (2.4G),Latency (5G),Latency (6G (5G)),Airtime Utilization (2.4G),Airtime Utilization (5G),Connection Failures,Channel (2.4G),Channel (5G),Channel (6G (5G)),Mesh Mode,Mesh Role,Configuration Status,Last Seen
+00:E6:3A:10:D4:D0,F2.6,Flagged,0,10.34.11.30/2405:8740:6314:3400:3192:c4a9:1228:dceb,11882633459,7,0,4,,0,92,3,Disabled (20MHz),161 (20MHz),,Auto,DISABLED,Up-to-date,2025/08/26 15:40:24
+C0:C7:0A:18:35:00,F2.2-R650,Flagged,0,10.34.11.37/2405:8740:6314:3400:c2c7:aff:fe18:3500,7934501510,21,0,56,,0,44,37,Disabled (20MHz),157 (20MHz),,Auto,DISABLED,Up-to-date,2025/08/26 15:40:05
+00:E6:3A:10:F1:B0,F2.4,Flagged,0,10.34.11.176/2405:8740:6314:3400:2e6:3aff:fe10:f1b0,3162790783,31,0,59,,0,27,5,Disabled (20MHz),149 (20MHz),,Auto,DISABLED,Up-to-date,2025/08/26 15:40:00
+C0:C7:0A:18:3A:70,F2.5-R650,Flagged,0,10.34.11.17/2405:8740:6314:3400:c2c7:aff:fe18:3a70,32846727993,58,0,13,,28,19,43,11 (20MHz),44 (20MHz),,Auto,DISABLED,Up-to-date,2025/08/26 15:40:23
+C0:C7:0A:18:3A:A0,F2.9-R650,Online,0,10.34.11.5/2405:8740:6314:3400:c2c7:aff:fe18:3aa0,4095987975,52,0,18,,48,16,16,1 (20MHz),153 (20MHz),,Auto,DISABLED,Up-to-date,2025/08/26 15:39:39
+00:33:58:0E:91:E0,F2-Ext-Koridor,Flagged,0,10.34.11.174/2405:8740:6314:3400:3073:ed89:240e:4a4d,40597068752,29,0,26,,60,4,20,6 (20MHz),161 (20MHz),,Auto,DISABLED,Up-to-date,2025/08/26 15:41:12
